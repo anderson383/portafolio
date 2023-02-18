@@ -20,12 +20,15 @@ const Page = ({
   const { container } = useRepositoryIoc();
 
   return (
-    <PageHead
-      titleSeo={data.titleSeo}
-      metaDescription={data.metaDescription}
-      imagenSeo={data.imagenSeo.fields.file.url}
-      relCanonical=""
-    />
+    <>
+      <PageHead
+        titleSeo={data.titleSeo}
+        metaDescription={data.metaDescription}
+        imagenSeo={data.imagenSeo.fields.file.url}
+        relCanonical=""
+      />
+      <h1>Pagina de prueba</h1>
+    </>
   );
 };
 
