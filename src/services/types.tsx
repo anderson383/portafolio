@@ -1,0 +1,3 @@
+const TYPES = {CONTENTFUL_REPOSITORY: Symbol.for('CONTENTFUL_REPOSITORY')};
+
+export {TYPES};
