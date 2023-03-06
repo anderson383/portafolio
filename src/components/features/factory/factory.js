@@ -25,7 +25,7 @@ const Factory = ({
     return null;
   }
 
-  const newConten = {theme: theme};
+  const newContent = {theme: theme};
 
   Object.getOwnPropertyNames(componentProps).forEach(property => {
     if (fields[property] && property !== 'style') {
