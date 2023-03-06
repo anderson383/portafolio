@@ -3,15 +3,7 @@ import { Entry } from 'contentful';
 
 import transformField from './transform-field';
 
-interface FactoryProps {
-  component: Entry<{
-    [name:string]: string
-  }>
-  locale: string
-  page?:string
-}
-
-const Factory:React.FC<FactoryProps> = ({
+const Factory = ({
   component,
   locale,
   page = null
@@ -33,7 +25,7 @@ const Factory:React.FC<FactoryProps> = ({
     return null;
   }
 
-  const newContent:{[name:string]: string} = {theme: theme};
+  const newConten = {theme: theme};
 
   Object.getOwnPropertyNames(componentProps).forEach(property => {
     if (fields[property] && property !== 'style') {

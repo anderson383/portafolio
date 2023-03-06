@@ -2,8 +2,8 @@ import {
   useEffect, useState
 } from 'react';
 import axiosIntance from '@/services/config/axios/AxiosConfig';
-import styles from './banner.module.scss';
 import { Interweave } from 'interweave';
+import styles from './banner.module.scss';
 import { useLottie } from 'lottie-react';
 interface BannerProps {
   content: {
@@ -26,7 +26,6 @@ export const Banner:React.FC<BannerProps> = props => {
   } = props.content;
   const [jsonAnimation, setJsonAnimation] = useState('');
 
-  console.log(props.content);
   useEffect(() => {
     axiosIntance.get(image.url, {responseType: 'json'}).then(resp => {
       setJsonAnimation(resp.data);
@@ -61,12 +60,12 @@ export const Banner:React.FC<BannerProps> = props => {
 
 Banner.defaultProps = {
   content: {
+    image: {url: ''},
     link: '',
     name: '',
     style: '',
-    image: {url: ''},
-    title: '',
-    subtitle: ''
+    subtitle: '',
+    title: ''
   },
   locale: '',
   page: ''

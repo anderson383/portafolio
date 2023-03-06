@@ -44,7 +44,7 @@
     "jest.config.js",
     "components/features/factory/factory.js",
     "components/features/factory/transform-field.js",
-    "components/features/factory/index.js", "src/components/features/factory/factory.tsx"  ],
+    "components/features/factory/index.js", "src/components/features/factory/factory.js"  ],
   "exclude": [
     "node_modules"
   ]

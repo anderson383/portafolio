@@ -1,4 +1,6 @@
-import { INLINES, BLOCKS } from '@contentful/rich-text-types';
+import {
+  BLOCKS, INLINES
+} from '@contentful/rich-text-types';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 import HTMLParser from 'node-html-parser';
 
@@ -14,23 +16,24 @@ const makeDocumentObject = nodesArray => {
 };
 
 const richTextRenderOptions = { renderNode:
-  { [INLINES.HYPERLINK]: (node, children) => {
-    const uri = node.data.uri;
+  {
+    [INLINES.HYPERLINK]: (node, children) => {
+      const uri = node.data.uri;
 
-    if (uri.startsWith('http')) {
-      return `<a class="link-2" href="${ uri }" target="_blank" rel="noopener noreferrer">${ documentToHtmlString(node) }</a>`;
+      if (uri.startsWith('http')) {
+        return `<a class="link-2" href="${ uri }" target="_blank" rel="noopener noreferrer">${ documentToHtmlString(node) }</a>`;
+      }
+
+      return `<a class="link-2" href="${ uri }">${ documentToHtmlString(node) }</a>`;
+    },
+    [BLOCKS.EMBEDDED_ASSET]: (node, children) => {
+      const assetFields = node.data.target.fields;
+
+      if (assetFields.file.contentType.includes('image')) {
+        return `<img src="https:${ assetFields.file.url }" alt="${ assetFields.title }" />`;
+      }
     }
-
-    return `<a class="link-2" href="${ uri }">${ documentToHtmlString(node) }</a>`;
-  },
-  [BLOCKS.EMBEDDED_ASSET]: (node, children) => {
-    const assetFields = node.data.target.fields;
-
-    if (assetFields.file.contentType.includes('image')) {
-      return `<img src="https:${ assetFields.file.url }" alt="${ assetFields.title }" />`;
-    }
-  }
-}};
+  }};
 
 const transformFieldsObject = fields => {
   const newFields = {};

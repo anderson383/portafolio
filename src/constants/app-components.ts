@@ -1,22 +1,6 @@
 import Banner from '@/components/features/banner/';
 
-interface AppComponents {
-  [name:string]: {
-    component: {
-      (): JSX.Element;
-      defaultProps: {
-        content: {
-          [name: string]: {}
-        },
-        locale: string
-        page: string
-      }
-    },
-    theme: string
-  }
-}
-
-const APP_COMPONENTS: AppComponents = {
+const APP_COMPONENTS = {
   'main-banner': {
     component: Banner,
     theme: 'default'

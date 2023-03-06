@@ -4,12 +4,12 @@ import {
 import {
   GetStaticPaths, GetStaticProps
 } from 'next';
+import Factory from '@/components/features/factory/factory';
 import PageHead from '@/components/features/page-head/page-head';
+import { PublicLayout } from '@/components/layouts';
 import { repositoryContainer } from '@/services/inversify.conf';
 import { TYPES } from '@/services/types';
 import { useRepositoryIoc } from '@/services/context';
-import { PublicLayout } from '@/components/layouts';
-import Factory from '@/components/features/factory/factory';
 
 export interface PageProps {
   data: PageData;
@@ -20,8 +20,6 @@ const Page = ({
   data, locale
 }:PageProps) => {
   const { container } = useRepositoryIoc();
-
-  console.log(data.content);
 
   return (
     <>
