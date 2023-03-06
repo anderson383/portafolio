@@ -1,0 +1,26 @@
+@import '../../../styles/scss/modules/var';
+
+.banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 85px;
+  min-height: 971px;
+
+  .title {
+    font-family: $fjalla-one;
+    font-size:  35px !important;
+    font-weight: 200;
+    color: $white;
+
+    b {
+      color: $rose;
+    }
+  }
+
+  .subtitle {
+    font-family: $fjalla-one;
+    color: $rose;
+    font-size:  36px !important;
+  }
+}

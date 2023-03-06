@@ -8,6 +8,8 @@ import PageHead from '@/components/features/page-head/page-head';
 import { repositoryContainer } from '@/services/inversify.conf';
 import { TYPES } from '@/services/types';
 import { useRepositoryIoc } from '@/services/context';
+import { PublicLayout } from '@/components/layouts';
+import Factory from '@/components/features/factory/factory';
 
 export interface PageProps {
   data: PageData;
@@ -19,6 +21,8 @@ const Page = ({
 }:PageProps) => {
   const { container } = useRepositoryIoc();
 
+  console.log(data.content);
+
   return (
     <>
       <PageHead
@@ -27,7 +31,19 @@ const Page = ({
         imagenSeo={data.imagenSeo.fields.file.url}
         relCanonical=""
       />
-      <h1>Pagina de prueba</h1>
+      <PublicLayout
+        headerData={data.header}
+      >
+
+        {
+          data.content.map(item => (
+            <Factory
+              component={item}
+              locale={locale}
+            />
+          ))
+        }
+      </PublicLayout>
     </>
   );
 };

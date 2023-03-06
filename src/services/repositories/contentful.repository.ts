@@ -30,6 +30,21 @@ export type Image = {
   };
 };
 
+export type MenuProps = {
+  fields: {
+    name: string;
+    link: string;
+  }
+}
+
+export type HeaderProps = {
+  fields: {
+    logo: Image;
+    name: string;
+    menu: MenuProps[]
+  }
+}
+
 export type PageData = {
   slug: string;
   relCanonical: string;
@@ -37,7 +52,8 @@ export type PageData = {
   metaDescription: string;
   imagenSeo?: Image;
 
-  // header: Header;
+  header: HeaderProps;
+
   // keywordsSeo: string[];
   content?: Entry<unknown>[];
 

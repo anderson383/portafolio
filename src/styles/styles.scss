@@ -1,0 +1,11 @@
+@import 'scss/partial/fonts';
+@import 'scss/partial/typography';
+
+body {
+  position: relative;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+}
