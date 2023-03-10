@@ -10,31 +10,88 @@
   position: absolute;
   right: 0;
   left: 0;
+  z-index: 2;
 
+  .button_menu {
+    display: none;
+    background: transparent;
+    border: none;
+    margin-right: 12px;
+    cursor: pointer;
+    @include media('mobile') {
+      display: block;
+    }
+  }
   
   nav {
     display: flex;
     padding-right: 76px;
     align-items: center;
     gap: 68px;
+    z-index: 200;
+    position: relative;
 
     @include media('mobile') {
-      display: none;
+      padding-right: 0;
     }
   }
+
+  .menu_active {
+    @include media('mobile') {
+        display: flex !important;
+        position: absolute;
+        flex-direction: column;
+        top: 40px;
+        right: 20px;
+        background: #ffff;
+        border-radius: 10px;
+        padding: 16px;
+        width: max-content;
+        box-sizing: border-box;
+
+        a {
+          color: $rose !important;
+        }
+      }
+    }
+    
 
   .logo {
     padding-left: 25px;
   }
 
-  .menu {
+  .menu_mobile {
+    display: none;
+    list-style: none;
+    gap: 30px;
+
+
+    a {
+      color: $white;
+      font-family: $fjalla-one;
+    }
+
+  }
+
+  .menu_desk {
     display: flex;
     list-style: none;
     gap: 30px;
 
-    a {
-      color: $white;
+    @include media('mobile') {
+      display: none;
     }
 
+    a {
+      color: $white;
+      font-family: $fjalla-one;
+    }
+
+  }
+
+  .darkInput {
+    @include media('mobile') {
+      display: none;
+    }
   }
 }
