@@ -4,6 +4,9 @@ import {
 import {
   GetStaticPaths, GetStaticProps
 } from 'next';
+import {
+  useEffect, useState
+} from 'react';
 import Factory from '@/components/features/factory/factory';
 import PageHead from '@/components/features/page-head/page-head';
 import { PublicLayout } from '@/components/layouts';
@@ -21,7 +24,13 @@ const Page = ({
 }:PageProps) => {
   const { container } = useRepositoryIoc();
 
-  return (
+  const [mount, setMount] = useState(false);
+
+  useEffect(() => {
+    setMount(true);
+  }, []);
+
+  return mount ? (
     <>
       <PageHead
         titleSeo={data.titleSeo}
@@ -34,8 +43,9 @@ const Page = ({
       >
 
         {
-          data.content.map(item => (
+          data.content.map((item, index) => (
             <Factory
+              key={index}
               component={item}
               locale={locale}
             />
@@ -43,7 +53,7 @@ const Page = ({
         }
       </PublicLayout>
     </>
-  );
+  ) : <></>;
 };
 
 export const getStaticProps: GetStaticProps = async ({

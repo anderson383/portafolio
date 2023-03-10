@@ -22,9 +22,37 @@ interface BannerProps {
 
 export const Banner:React.FC<BannerProps> = props => {
   const {
-    image, title, subtitle
+    image, title, subtitle, link
   } = props.content;
   const [jsonAnimation, setJsonAnimation] = useState('');
+
+  const interweaveTransformLinks = (node: HTMLElement) => {
+    if (node.tagName === 'a' || node.tagName === 'A') {
+      const content = node.childNodes[0].textContent;
+      const url = node.getAttribute('href');
+
+      return (
+        <>
+          <a
+            className={styles.btn_cv}
+            href={url}
+            target="_blank"
+          >
+            <img
+              alt={'arrow right'}
+              className="mx-2 mb-1"
+              id="svgClose"
+
+              src="/img/cv-icon.svg"
+              width="35"
+              height="35"
+            />
+            {content}
+          </a>
+        </>
+      );
+    }
+  };
 
   useEffect(() => {
     axiosIntance.get(image.url, {responseType: 'json'}).then(resp => {
@@ -41,7 +69,13 @@ export const Banner:React.FC<BannerProps> = props => {
 
   return (
     <div className={styles.banner}>
+      <>
+        <img className={styles.img_letf} src="/img/bg-banner.svg" alt="" />
+        <img className={styles.img_right} src="/img/bg-banner-2.svg" alt="" />
+        <img className={styles.ellipse_2} src="/img/ellipse-2.svg" alt="" />
+      </>
       <div className={styles.image_banner}>
+        <img className={styles.ellipse_1} src="/img/ellipse-1.svg" alt="" />
         { View }
       </div>
       <div className={styles.info}>
@@ -52,6 +86,12 @@ export const Banner:React.FC<BannerProps> = props => {
         />
         <div className={styles.subtitle}>
           {subtitle}
+
+          <Interweave
+            tagName='div'
+            content={link}
+            transform={interweaveTransformLinks}
+          />
         </div>
       </div>
     </div>

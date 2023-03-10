@@ -1,20 +1,38 @@
 @import '../../../styles/scss/modules/var';
+@import '../../../styles/scss/modules/mixins';
 
 .banner {
   display: flex;
+  position: relative;
   align-items: center;
   justify-content: center;
   gap: 85px;
   min-height: 971px;
 
+
+  .info {
+    z-index: 2;
+
+    @include media ('mobile') {
+      padding: 30px;
+    }
+  }
   .title {
     font-family: $fjalla-one;
     font-size:  35px !important;
     font-weight: 200;
     color: $white;
-
+    h1 {
+      margin: 0 0 40px 0;
+    }
     b {
       color: $rose;
+    }
+
+    p {
+      font-family: $covered-Grace;
+    color: $white;
+    font-size: 40px;
     }
   }
 
@@ -23,4 +41,57 @@
     color: $rose;
     font-size:  36px !important;
   }
+
+  .subtitle_top {
+    
+  }
+
+  .img_letf {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+
+  .img_right {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  
+
+  .ellipse_2 {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  .image_banner {
+    position: relative;
+
+    .ellipse_1 {
+      position: absolute;
+      top: -30px;
+      right: 0;
+    }
+
+    @include media('mobile') {
+      display: none;
+    }
+  }
+}
+
+.btn_cv {
+  cursor: pointer;
+  margin-top: 35px;
+  background: $white;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  width: max-content;
+  padding: 5px 10px;
+  font-size: 16px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #000000;
 }
