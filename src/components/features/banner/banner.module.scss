@@ -1,14 +1,30 @@
 @import '../../../styles/scss/modules/var';
 @import '../../../styles/scss/modules/mixins';
 
+
+@keyframes typing {
+  from { width: 0 }
+}
+
+@keyframes blink2 {
+  50% {
+    border-color: transparent;
+  }
+}
+
 .banner {
   display: flex;
   position: relative;
   align-items: center;
   justify-content: center;
   gap: 85px;
-  min-height: 971px;
+  // min-height: 971px;
+  font-size: 16px;
+  padding: 216px 0 325px;
 
+  @include media ('mobile') {
+    font-size: 13px;
+  }
 
   .info {
     z-index: 2;
@@ -17,9 +33,10 @@
       padding: 30px;
     }
   }
+
   .title {
     font-family: $fjalla-one;
-    font-size:  35px !important;
+    font-size:  2.2em !important;
     font-weight: 200;
     color: $white;
     h1 {
@@ -31,39 +48,23 @@
 
     p {
       font-family: $covered-Grace;
-    color: $white;
-    font-size: 40px;
+      color: $white;
+      font-size: 40px;
     }
   }
 
-  .subtitle {
-    font-family: $fjalla-one;
-    color: $rose;
-    font-size:  36px !important;
-  }
-
-  .subtitle_top {
-    
-  }
-
-  .img_letf {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-  }
-
-  .img_right {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-
   
-
-  .ellipse_2 {
-    position: absolute;
-    left: 0;
-    top: 0;
+  .subtitle {
+    p {
+      font-family: $fjalla-one;
+      color: $rose;
+      font-size:  2.25em !important;
+      padding-right: 10px;
+      white-space: nowrap;
+      border-right: 4px solid $rose;
+      animation: typing 2s steps(24), blink2 .5s infinite step-end alternate;
+      overflow:hidden;
+    }
   }
 
   .image_banner {
@@ -79,12 +80,31 @@
       display: none;
     }
   }
+
+  .img_letf {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+
+  .img_right {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  .ellipse_2 {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
 }
 
 .btn_cv {
   cursor: pointer;
   margin-top: 35px;
   background: $white;
+  font-family: $fjalla-one;
   display: flex;
   align-items: center;
   gap: 7px;

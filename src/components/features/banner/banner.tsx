@@ -62,10 +62,14 @@ export const Banner:React.FC<BannerProps> = props => {
 
   const options = {
     animationData: jsonAnimation,
+    height: 430,
     loop: true
   };
 
-  const { View } = useLottie(options);
+  const { View } = useLottie(options, {
+    height: 430,
+    width: 430
+  });
 
   return (
     <div className={styles.banner}>
@@ -85,8 +89,7 @@ export const Banner:React.FC<BannerProps> = props => {
           attributes={{ className: styles.title }}
         />
         <div className={styles.subtitle}>
-          {subtitle}
-
+          <p style={{ width: subtitle.length - 4 + 'ch'}}>{subtitle}</p>
           <Interweave
             tagName='div'
             content={link}
