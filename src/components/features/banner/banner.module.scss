@@ -20,7 +20,8 @@
   gap: 85px;
   // min-height: 971px;
   font-size: 16px;
-  padding: 216px 0 325px;
+  padding: 216px 0;
+  overflow: hidden;
 
   @include media ('mobile') {
     font-size: 13px;
@@ -85,12 +86,23 @@
     position: absolute;
     left: 0;
     bottom: 0;
+
+    @include media('mobile') {
+      left: -62px;
+    }
+
+    
   }
 
   .img_right {
     position: absolute;
     right: 0;
     top: 0;
+
+    @include media('mobile') {
+      right: -60px;
+      top: -100px;
+    }
   }
 
   .ellipse_2 {

@@ -2,14 +2,14 @@
 @import '../../../styles/scss/modules/mixins';
 
 .about_me {
-  background: linear-gradient(180deg, #340168 0%, #27014E 100%);
-  padding-top: 112px;
+  // background: linear-gradient(180deg, #340168 0%, #27014E 100%);
   padding-bottom: 26px;
   overflow: hidden;
+  position: relative;
 
   .title {
     text-align: center;
-    margin: 143px 0;
+    margin-bottom: 140px;
     h2 {
       color: $rose;
       font-size: 48px;
@@ -42,7 +42,7 @@
       padding: 84px 28px 103px;
       
       p {
-        font-family: 'Cascadia code';
+        font-family: $cascadia-code;
         font-size: 28px;
         color: $white;
 
@@ -50,6 +50,12 @@
           // display: none;
           font-size: 20px;
         }
+      }
+
+
+      b {
+        font-family: $cascadia-code;
+        color: $orange;
       }
 
       
@@ -74,11 +80,20 @@
   }
 
   .footer {
-    padding: 0 90px;
+    padding: 0 142px;
 
     & > div {
       cursor: pointer;
     }
+
+    @include media('mobile') {
+      padding: 0 30px;
+    }
   }
-  
+
+  .icon_bg_3 {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
 }

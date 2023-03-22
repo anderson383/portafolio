@@ -13,6 +13,7 @@ interface AboutMeProps {
     title:string;
     link: string;
     subtitle: string;
+    description: string;
     image: {
       url: string
     }
@@ -23,7 +24,7 @@ interface AboutMeProps {
 
 const AboutMe:React.FC<AboutMeProps> = props => {
   const {
-    title, subtitle, image
+    title, subtitle, image, description
   } = props.content;
 
   const [jsonAnimation, setJsonAnimation] = useState({
@@ -71,14 +72,13 @@ const AboutMe:React.FC<AboutMeProps> = props => {
 
   return (
     <div className={styles.about_me + ' '}>
-
+      <img className={styles.icon_bg_3}src="/img/ellipse-about-me-3.svg" alt="" />
       <div className="container">
 
         <div className={styles.title}>
           <Interweave
             tagName='div'
             content={title}
-            attributes={{ className: styles.title }}
           />
         </div>
 
@@ -88,7 +88,10 @@ const AboutMe:React.FC<AboutMeProps> = props => {
             <img className={styles.icon_bg_2}src="/img/ellipse-about-me-2.png" alt="" />
           </div>
           <div className={styles.text}>
-            <p>{subtitle}</p>
+            <Interweave
+              tagName='div'
+              content={description}
+            />
           </div>
           <div className={styles.image}>
             {ViewAboutMe}
@@ -107,6 +110,7 @@ const AboutMe:React.FC<AboutMeProps> = props => {
 
 AboutMe.defaultProps = {
   content: {
+    description: '',
     image: {url: ''},
     link: '',
     name: '',
