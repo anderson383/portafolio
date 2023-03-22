@@ -1,3 +1,9 @@
+@import '../modules/var';
+
+* {
+  font-family: $fjalla-one;
+}
+
 .link-1 {
   font-size: 16px;
   font-family: Arial, Helvetica, sans-serif;

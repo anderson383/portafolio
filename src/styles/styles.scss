@@ -1,9 +1,55 @@
 @import 'scss/partial/fonts';
 @import 'scss/partial/typography';
 
+// @mixin scrollbars($size, $foreground-color, $background-color: mix($foreground-color, white,  50%)) {
+//   // For Google Chrome
+//   &::-webkit-scrollbar {
+//     width:  $size;
+//     height: $size;
+//   }
+
+//   &::-webkit-scrollbar-thumb {
+//     background: $foreground-color;
+//   }
+
+//   &::-webkit-scrollbar-track {
+//     background: $background-color;
+//   }
+
+//   // For Internet Explorer
+//   & {
+//     scrollbar-face-color: $foreground-color;
+//     scrollbar-track-color: $background-color;
+//   }
+// }
+
 body {
   position: relative;
+  &::-webkit-scrollbar {
+    width:  7px;
+    height: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #fe009871;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #430086;
+  }
 }
+
+// body::-webkit-scrollbar-thumb {
+//   background-color: #F5F5F5;
+// 	float: left;
+// 	height: 300px;
+// 	margin-bottom: 25px;
+// 	margin-left: 22px;
+// 	margin-top: 40px;
+// 	width: 65px;
+// 	overflow-y: scroll;
+// }
 
 .container {
   max-width: 1440px;
