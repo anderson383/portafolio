@@ -1,18 +1,11 @@
 import {
   ContentFulRepository, PageData
 } from '@/services/repositories/contentful.repository';
-import {
-  useEffect, useState
-} from 'react';
-import Factory from '@/components/features/factory/factory';
 import { GetStaticProps } from 'next';
-import Head from 'next/head';
 import { Inter } from '@next/font/google';
-import PageHead from '@/components/features/page-head/page-head';
-import { PublicLayout } from '@/components/layouts';
+import Page from './[...slug]';
 import { repositoryContainer } from '@/services/inversify.conf';
 import { TYPES } from '@/services/types';
-import Page from './[...slug]';
 
 export interface PageProps {
   data: PageData;
@@ -52,8 +45,8 @@ export const getStaticProps: GetStaticProps = async ({
   params, locale
 }) => {
   const data = await getStaticSlugPageData(locale, {
-    en: '/',
-    es: '/'
+    en: '/en',
+    es: '/es'
   });
 
   return {props: {

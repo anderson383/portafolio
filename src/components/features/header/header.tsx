@@ -1,10 +1,10 @@
-import Image from 'next/image';
-import { MenuProps } from '@/services/repositories/contentful.repository';
-import styles from './header.module.scss';
 import {
   useEffect, useState
 } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
+import { MenuProps } from '@/services/repositories/contentful.repository';
+import styles from './header.module.scss';
 import { useRouter } from 'next/router';
 
 interface HeaderProps {
