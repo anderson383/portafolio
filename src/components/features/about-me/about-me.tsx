@@ -24,7 +24,7 @@ interface AboutMeProps {
 
 const AboutMe:React.FC<AboutMeProps> = props => {
   const {
-    title, subtitle, image, description
+    title, image, description, link
   } = props.content;
 
   const [jsonAnimation, setJsonAnimation] = useState({
@@ -33,19 +33,24 @@ const AboutMe:React.FC<AboutMeProps> = props => {
   });
 
   useEffect(() => {
-    axiosIntance.get(image.url, {responseType: 'json'}).then(resp => {
-      setJsonAnimation(last => ({
-        ...last,
-        urlMainImage: resp.data
-      }));
-    });
+    async function fetchData() {
+      try {
+        const [mainImageResp, iconGitResp] = await Promise.all([
+          axiosIntance.get(image.url, { responseType: 'json' }),
+          axiosIntance.get('https://lottie.host/6a52efa3-38ea-4dcd-8e48-968f1042aa6b/bRaMeUp92U.json', { responseType: 'json' })
+        ]);
 
-    axiosIntance.get('https://lottie.host/6a52efa3-38ea-4dcd-8e48-968f1042aa6b/bRaMeUp92U.json', {responseType: 'json'}).then(resp => {
-      setJsonAnimation(last => ({
-        ...last,
-        urlIconGit: resp.data
-      }));
-    });
+        setJsonAnimation(last => ({
+          ...last,
+          urlIconGit: iconGitResp.data,
+          urlMainImage: mainImageResp.data
+        }));
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    fetchData();
   }, []);
 
   const options = {
@@ -70,8 +75,26 @@ const AboutMe:React.FC<AboutMeProps> = props => {
     width: 66
   });
 
+  const interweaveTransformLinks = (node: HTMLElement) => {
+    if (node.tagName === 'a' || node.tagName === 'A') {
+      const content = node.childNodes[0].textContent;
+      const url = node.getAttribute('href');
+
+      return (
+        <>
+          <a
+            href={url}
+            target="_blank"
+          >
+            { ViewGitIcon }
+          </a>
+        </>
+      );
+    }
+  };
+
   return (
-    <div className={styles.about_me + ' '}>
+    <div className={styles.about_me + ' '} id='sobre-mi'>
       <img className={styles.icon_bg_3}src="/img/ellipse-about-me-3.svg" alt="" />
       <div className="container">
 
@@ -99,9 +122,11 @@ const AboutMe:React.FC<AboutMeProps> = props => {
         </div>
 
         <div className={styles.footer}>
-          {
-            ViewGitIcon
-          }
+          <Interweave
+            tagName='div'
+            content={link}
+            transform={interweaveTransformLinks}
+          />
         </div>
       </div>
     </div>
