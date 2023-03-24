@@ -11,7 +11,7 @@
   align-items: center;
   display: flex;
   position: fixed;
-  height: 70px;
+  height: 60px;
   background: rgb(85 50 149 / 75%);
   backdrop-filter: blur(2px);
   width: 100%;
@@ -110,7 +110,8 @@
     }
 
     .link_active {
-      color: $rose !important;
+      border-bottom: 2px solid $rose !important;
+      // color: 
     }
 
   }

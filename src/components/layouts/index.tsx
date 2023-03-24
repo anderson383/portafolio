@@ -1,4 +1,5 @@
-import Header from '../features/header/header';
+import Footer from '../features/footer';
+import Header from '../features/header';
 import { HeaderProps } from '@/services/repositories/contentful.repository';
 import styles from './publicLayout.module.scss';
 
@@ -23,6 +24,7 @@ export const PublicLayout:React.FC<PublicLayoutProps> = ({
             children
           }
         </main>
+        <Footer />
       </div>
     </>
   );

@@ -23,21 +23,29 @@
 //   }
 // }
 
+html {
+  scroll-behavior: smooth !important;
+}
+
 body {
+  overflow: overlay;
   position: relative;
   &::-webkit-scrollbar {
     width:  7px;
-    height: 10px;
+    max-height: 2px !important;
   }
 
   &::-webkit-scrollbar-thumb {
+    background-color: transparent;
     background: #fe009871;
-    border-radius: 10px;
+    border-radius: 100px;
   }
 
   &::-webkit-scrollbar-track {
     background: #430086;
+    background-color: transparent;
   }
+  
 }
 
 // body::-webkit-scrollbar-thumb {
