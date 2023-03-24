@@ -108,11 +108,7 @@
   .ellipse_2 {
     position: absolute;
     left: 0;
-    top: 0;
-
-    @include media('mobile') {
-      top: -50px;
-    }
+    top: -50px;
   }
 }
 
