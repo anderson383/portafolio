@@ -6,13 +6,33 @@ import transformField from './transform-field';
 const Factory = ({
   component,
   locale,
-  page = null
+  page = null,
+  menuData = null,
+  menuRoute = null
 }) => {
   if (component === null) {
     return null;
   }
 
   const fields = component.fields;
+  const contentType = component?.sys?.contentType?.sys?.id;
+
+  // if (contentType === 'tab-item') {
+  //   const nenuItems = menuData;
+
+  //   return (
+  //     nenuItems
+  //     && <>
+  //       <MainMenu items={nenuItems} page={page}>
+  //         {fields.content?.map((subComponent, index) => {
+  //           return (
+  //             <Factory key={index} component={subComponent} menuRoute={getSelectedMenuRoute(nenuItems)} locale={locale} page={page}/>
+  //           );
+  //         })}
+  //       </MainMenu>
+  //     </>
+  //   );
+  // }
 
   const {
     component: Component,
@@ -26,6 +46,38 @@ const Factory = ({
   }
 
   const newContent = {theme: theme};
+
+  if (contentType === 'tab-panel') {
+    const tabContanerProps = {
+      content: {
+        image: transformField('image', fields.image),
+        tabs: fields.items?.map((tabData, tabIndex) => {
+          return {
+            components: tabData.fields?.content?.map((subComponent, componentIndex) => {
+              return (
+                <Factory key={`${ tabIndex }${ componentIndex }`} component={subComponent} menuRoute={menuRoute} locale={locale} page={page} menuData={menuData} />
+              );
+            }),
+            icon: transformField('icon', tabData.fields?.icon),
+            secondaryIcon: transformField('icon', tabData.fields?.secondaryIcon),
+            style: tabData.fields?.style,
+            title: tabData.fields?.title
+          };
+        }),
+        theme: theme,
+        title: fields.title
+      },
+      locale: { locale },
+      menuRoute: menuRoute,
+      page: {page}
+    };
+
+    return (
+      <>
+        <Component {...tabContanerProps}></Component>
+      </>
+    );
+  }
 
   Object.getOwnPropertyNames(componentProps).forEach(property => {
     if (fields[property] && property !== 'style') {

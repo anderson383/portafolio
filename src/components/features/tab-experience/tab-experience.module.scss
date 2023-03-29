@@ -1,0 +1,56 @@
+@import '../../../styles/scss/modules/var';
+@import '../../../styles/scss/modules/mixins';
+
+.tab_experience {
+  padding-bottom: 10rem;
+  h2 {
+    margin-top: 100px;
+    margin-bottom: 40px;
+    color: $rose;
+    font-size: 40px;
+  }
+  .tabs {
+    display: flex;
+    gap: 24px;
+  }
+
+  .container {
+    max-width: 1160px;
+  }
+
+  .header_buttons {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    @include media('mobile') {
+      display: none;
+    }
+
+    &::before {
+      content: '';
+      height: 100%;
+      width: 2px;
+      background-color: $white;
+      position: absolute;
+    }
+
+    button {
+      min-width: 150px;
+      background-color: transparent;
+      border: none;
+      color: $white;
+      padding: 12px 30px 12px 12px;
+      box-sizing: border-box;
+      border-left: 2px solid transparent;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+      transition: border-color .3s ease-in-out;
+      text-align: left;
+      &.active {
+        border-color: $rose;
+        z-index: 2;
+      }
+    }
+  }
+}

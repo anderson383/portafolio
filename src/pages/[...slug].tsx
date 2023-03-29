@@ -13,7 +13,9 @@ import { PublicLayout } from '@/components/layouts';
 import { repositoryContainer } from '@/services/inversify.conf';
 import { TYPES } from '@/services/types';
 import { useRepositoryIoc } from '@/services/context';
-import { ScrollContainer } from 'react-scroll-motion';
+import {
+  ScrollContainer, ScrollPage
+} from 'react-scroll-motion';
 
 export interface PageProps {
   data: PageData;
@@ -42,17 +44,17 @@ const Page = ({
       <PublicLayout
         headerData={data.header}
       >
-        <ScrollContainer>
-          {
-            data.content.map((item, index) => (
-              <Factory
-                key={index}
-                component={item}
-                locale={locale}
-              />
-            ))
-          }
-        </ScrollContainer>
+        {/* <ScrollContainer className='sssss'> */}
+        {
+          data.content.map((item, index) => (
+            <Factory
+              key={index}
+              component={item}
+              locale={locale}
+            />
+          ))
+        }
+        {/* </ScrollContainer> */}
       </PublicLayout>
     </>
   ) : <></>;
