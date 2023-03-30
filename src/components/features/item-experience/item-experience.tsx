@@ -1,6 +1,6 @@
+import { Interweave } from 'interweave';
 import React from 'react';
 import styles from './item-experience.module.scss';
-import { Interweave } from 'interweave';
 interface ItemExperienceProps {
   content: {
     style: string;
@@ -22,8 +22,6 @@ const ItemExperience:React.FC<ItemExperienceProps> = props => {
     title, description
   } = props.content;
 
-  console.log(props.content);
-
   return (
     <div className={styles.experience}>
       <div className={styles.header}>
@@ -40,18 +38,17 @@ const ItemExperience:React.FC<ItemExperienceProps> = props => {
           attributes={{ className: styles.description }}
         />
       </div>
-      <p>Item experience</p>
     </div>
   );
 };
 
 ItemExperience.defaultProps = {
   content: {
+    description: '',
     image: {url: ''},
     link: '',
     name: '',
     style: '',
-    description: '',
     subtitle: '',
     title: ''
   },

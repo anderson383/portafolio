@@ -1,7 +1,5 @@
+import React, {useState} from 'react';
 import styles from './tab-experience.module.scss';
-import React, {
-  useEffect, useState
-} from 'react';
 
 interface TabsProps {
   components: [],
@@ -23,7 +21,7 @@ const TabExperience:React.FC<TabExperienceProps> = props => {
   const [active, setActive] = useState(0);
 
   return (
-    <div className={styles.tab_experience}>
+    <div className={styles.tab_experience} id='experiencia-laboral'>
       <div className={`container ${ styles.container }`}>
         <h2>{title}</h2>
         <div className={` ${ styles.tabs }`}>

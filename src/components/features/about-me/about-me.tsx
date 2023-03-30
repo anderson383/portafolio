@@ -108,7 +108,6 @@ const AboutMe:React.FC<AboutMeProps> = props => {
     <div className={styles.about_me + ' '} id='sobre-mi'>
       <img className={styles.icon_bg_3}src="/img/ellipse-about-me-3.svg" alt="" />
       <div className="container">
-
         <div className={styles.title}>
           <Animator animation={ZoomInScrollOut} >
             <Interweave

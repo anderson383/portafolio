@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { MenuProps } from '@/services/repositories/contentful.repository';
 import styles from './header.module.scss';
+
 import { useRouter } from 'next/router';
 
 interface HeaderProps {
@@ -67,6 +68,8 @@ export const Header:React.FC<HeaderProps> = ({
               menu.map((menuItem, index) => (
                 <li key={index + '222'}>
                   <Link
+                    scroll
+
                     href={menuItem.fields.link}
                     className={router.asPath === menuItem.fields.link ? styles.link_active : ''}
                   >
@@ -76,9 +79,9 @@ export const Header:React.FC<HeaderProps> = ({
               ))
             }
           </ul>
-          <div className={styles.darkInput}>
+          {/* <div className={styles.darkInput}>
             <input type="radio" />
-          </div>
+          </div> */}
         </nav>
       </div>
 

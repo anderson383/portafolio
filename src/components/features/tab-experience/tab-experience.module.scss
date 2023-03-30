@@ -13,6 +13,10 @@
     display: flex;
     gap: 24px;
     min-height: 350px;
+
+    @include media('mobile') {
+      flex-direction: column;
+    }
   }
 
   .container {
@@ -27,7 +31,8 @@
     position: relative;
 
     @include media('mobile') {
-      display: none;
+      flex-direction: row;
+      justify-content: space-between;
     }
 
     &::before {
@@ -37,6 +42,14 @@
       width: 2px;
       background-color: $white;
       position: absolute;
+
+      @include media('mobile') {
+        width: 100%;
+        min-width: 350px;
+        min-height: 2px;
+        height: 2px !important;
+        bottom: 0;
+      }
     }
 
     button {
@@ -54,6 +67,12 @@
       &.active {
         border-color: $rose;
         z-index: 2;
+      }
+
+      @include media('mobile') {
+        padding: 12px 20px 12px 12px;
+        border-left: none;
+        min-width: 80px;
       }
     }
   }

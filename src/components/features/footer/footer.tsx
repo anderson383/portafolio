@@ -4,7 +4,7 @@ const Footer = () => {
 
   return (
     <footer className={styles.footer}>
-      <a href="">
+      <a href="https://github.com/anderson383/portafolio" target='_blank'>
         Designed & Built by Anderson Sepulveda
         <p>{
           date.getFullYear()
