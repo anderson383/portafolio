@@ -21,6 +21,11 @@ export const Header:React.FC<HeaderProps> = ({
   const router = useRouter();
   const [openMenu, setOpenMenu] = useState(false);
   const [isFixed, setIsFixed] = useState(false);
+  const [isOpenLocales, setIsOpenLocales] = useState(false);
+
+  const handleLocaleChange = (language: string) => {
+    router.push(router.route, router.asPath, { locale: language });
+  };
 
   useEffect(() => {
     const handleScroll = () => setIsFixed(window.pageYOffset > 0);
@@ -69,7 +74,6 @@ export const Header:React.FC<HeaderProps> = ({
                 <li key={index + '222'}>
                   <Link
                     scroll
-
                     href={menuItem.fields.link}
                     className={router.asPath === menuItem.fields.link ? styles.link_active : ''}
                   >
@@ -78,6 +82,27 @@ export const Header:React.FC<HeaderProps> = ({
                 </li>
               ))
             }
+            <li className={styles.locales}>
+              <button onClick={() => setIsOpenLocales(islocale => !islocale)}>
+                <img src="https://img.icons8.com/nolan/64/language.png"/>
+
+                <ul className={`${ styles.showLocales } ${ isOpenLocales ? styles.isShowLocales : '' }`}>
+                  <li>
+                    <button
+                      onClick={() => handleLocaleChange('en')}
+                    >
+                    English
+                    </button>
+                    <button
+                      onClick={() => handleLocaleChange('es')}
+                    >
+                    Spanish
+                    </button>
+                  </li>
+                </ul>
+              </button>
+
+            </li>
           </ul>
           {/* <div className={styles.darkInput}>
             <input type="radio" />
