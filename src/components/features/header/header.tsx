@@ -85,22 +85,21 @@ export const Header:React.FC<HeaderProps> = ({
             <li className={styles.locales}>
               <button onClick={() => setIsOpenLocales(islocale => !islocale)}>
                 <img src="https://img.icons8.com/nolan/64/language.png"/>
-
-                <ul className={`${ styles.showLocales } ${ isOpenLocales ? styles.isShowLocales : '' }`}>
-                  <li>
-                    <button
-                      onClick={() => handleLocaleChange('en')}
-                    >
-                    English
-                    </button>
-                    <button
-                      onClick={() => handleLocaleChange('es')}
-                    >
-                    Spanish
-                    </button>
-                  </li>
-                </ul>
               </button>
+              <ul className={`${ styles.showLocales } ${ isOpenLocales ? styles.isShowLocales : '' }`}>
+                <li>
+                  <button
+                    onClick={() => handleLocaleChange('en')}
+                  >
+                    English
+                  </button>
+                  <button
+                    onClick={() => handleLocaleChange('es')}
+                  >
+                    Spanish
+                  </button>
+                </li>
+              </ul>
 
             </li>
           </ul>
