@@ -24,7 +24,17 @@ export const Header:React.FC<HeaderProps> = ({
   const [isOpenLocales, setIsOpenLocales] = useState(false);
 
   const handleLocaleChange = (language: string) => {
-    router.push(router.route, router.asPath, { locale: language });
+    // router.push(router.route, router.asPath, { locale: language });
+    const {
+      pathname, asPath, query
+    } = router;
+
+    // change just the locale and maintain all other route information including href's query
+
+    router.push({
+      pathname,
+      query
+    }, asPath, { locale: language });
   };
 
   useEffect(() => {
