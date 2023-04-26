@@ -89,7 +89,10 @@ export const Banner:React.FC<BannerProps> = props => {
           attributes={{ className: styles.title }}
         />
         <div className={styles.subtitle}>
-          <p style={{ width: subtitle.length - 4 + 'ch'}}>{subtitle}</p>
+          <p style={{
+            animationTimingFunction: `2s steps(${ subtitle.length + 2 }, start)`,
+            width: subtitle.length - 3 + 'ch'
+          }}>{subtitle}</p>
           <Interweave
             tagName='div'
             content={link}

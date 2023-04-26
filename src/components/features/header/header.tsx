@@ -45,8 +45,7 @@ export const Header:React.FC<HeaderProps> = ({
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-
-  console.log(menu);
+  console.log(router.locale);
 
   return (
     <header className={`${ styles.header_container } ${ isFixed ? styles.fixxed : '' }`} >
@@ -87,6 +86,8 @@ export const Header:React.FC<HeaderProps> = ({
                     spy={true}
                     smooth
                     duration={200}
+                    offset={-500}
+                    absolute
                     className={styles.link_active}
                     to={menuItem.fields.name.replace(' ', '-')?.toLocaleLowerCase().trim()}
                   >{menuItem.fields.name}</LinkScroll>
@@ -107,11 +108,13 @@ export const Header:React.FC<HeaderProps> = ({
               <ul className={`${ styles.showLocales } ${ isOpenLocales ? styles.isShowLocales : '' }`}>
                 <li>
                   <button
+                    className={router.locale === 'en' ? styles.localeActive : ''}
                     onClick={() => handleLocaleChange('en')}
                   >
                     English
                   </button>
                   <button
+                    className={router.locale === 'es' ? styles.localeActive : ''}
                     onClick={() => handleLocaleChange('es')}
                   >
                     Spanish

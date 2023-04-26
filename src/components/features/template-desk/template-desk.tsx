@@ -38,6 +38,24 @@ const TemplateDesk:React.FC<TemplateDeskProps> = ({content}) => {
     }
   };
 
+  const interweaveTransformIconsLinks = (node: HTMLElement) => {
+    if (node.tagName === 'a' || node.tagName === 'A') {
+      const url = node.getAttribute('href');
+      const contentUrl = node.childNodes[0].textContent;
+
+      if (url.includes('github.com')) {
+        return (
+          <>
+            <a href={url} target='_blank'>
+              <img src="/img/icon-github.svg" alt="" width={30} />
+              {contentUrl}
+            </a>
+          </>
+        );
+      }
+    }
+  };
+
   return (
     <section id='proyectos' className="container">
       <div className={styles.title}>
@@ -56,6 +74,7 @@ const TemplateDesk:React.FC<TemplateDeskProps> = ({content}) => {
           <Interweave
             tagName='div'
             content={description}
+            transform={interweaveTransformIconsLinks}
           />
         </div>
       </div>

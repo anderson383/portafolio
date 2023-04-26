@@ -136,6 +136,8 @@
           
         }
       }
+      
+      
 
       .showLocales {
         li {
@@ -170,6 +172,9 @@
       }
     }
 
+    .localeActive {
+      color: $rose !important;
+    }
   }
 
   .darkInput {
