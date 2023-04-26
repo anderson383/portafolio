@@ -45,7 +45,6 @@ export const Header:React.FC<HeaderProps> = ({
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-  console.log(router.locale);
 
   return (
     <header className={`${ styles.header_container } ${ isFixed ? styles.fixxed : '' }`} >
