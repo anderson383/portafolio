@@ -28,7 +28,7 @@ const TabExperience:React.FC<TabExperienceProps> = props => {
           <div className={styles.header_buttons}>
             {
               tabs && tabs.map((item, index) => (
-                <button key={'title-tab-experience-' + index} className={index === active ? styles.active : ''} onClick={() => setActive(index)}>{item.title}</button>
+                <button key={'title-tab-experience-' + index} className={`${ styles.tab_button } ${ index === active ? styles.active : '' }`} onClick={() => setActive(index)}>{item.title}</button>
               ))
             }
           </div>

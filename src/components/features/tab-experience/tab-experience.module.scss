@@ -51,28 +51,73 @@
         bottom: 0;
       }
     }
-
-    button {
+    
+    .tab_button {
       min-width: 150px;
       background-color: transparent;
       border: none;
       color: $white;
       padding: 12px 30px 12px 12px;
       box-sizing: border-box;
-      border-left: 2px solid transparent;
-      border-bottom: 2px solid transparent;
+      position: relative;
       cursor: pointer;
-      transition: border-color .3s ease-in-out;
       text-align: left;
+      // transition: border-color .3s ease-in-out;
+      // border-bottom: 2px solid transparent;
+      // border-left: 3px solid transparent;
+      &::before {
+        content: '';
+        position: absolute;
+        background-color: $rose;
+        height: 0%;
+        width: 3px;
+        bottom: 0;
+        left: 0;
+        transition: all .4s;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        background-color: $rose;
+        height: 3px;
+        bottom: 0;
+        left: 0;
+        width: 0%;
+        transition: all .4s;
+        // box-shadow:  0 -50px $rose;
+      }
+    
       &.active {
         border-color: $rose;
-        z-index: 2;
+        border-left-color: $rose;
+        border-bottom-color: $rose;
+        &::after {
+          width: 100%;
+        }
+        &::before {
+          height: 100%;
+        }
       }
+  
 
       @include media('mobile') {
         padding: 12px 20px 12px 12px;
-        border-left: none;
         min-width: 80px;
+
+        &::before {
+          height: 0 !important;
+        }
+
+        &::after {
+          left: 50%;
+        }
+
+        &.active {
+          &::after {
+            left: 0;
+          }
+        }
       }
     }
   }
