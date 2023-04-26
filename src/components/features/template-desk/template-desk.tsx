@@ -1,0 +1,74 @@
+import { Interweave } from 'interweave';
+import styles from './template-desk.module.scss';
+interface TemplateDeskProps {
+  content: {
+    title: string
+    link: string;
+    description: string
+    image: {
+      url: string
+    }
+    secondImage: {
+      url: string
+    }
+  }
+}
+
+const TemplateDesk:React.FC<TemplateDeskProps> = ({content}) => {
+  const {
+    title, image, secondImage, link, description
+  } = content;
+
+  const interweaveTransformLinks = (node: HTMLElement) => {
+    if (node.tagName === 'a' || node.tagName === 'A') {
+      const url = node.getAttribute('href');
+
+      return (
+        <>
+          <a className={styles.images} href={url} target='_blank'>
+            <div className={styles.desk}>
+              <img src={image?.url} alt="" />
+            </div>
+            <div className={styles.mobile}>
+              <img src={secondImage?.url} alt="" />
+            </div>
+          </a>
+        </>
+      );
+    }
+  };
+
+  return (
+    <section id='proyectos' className="container">
+      <div className={styles.title}>
+        <Interweave
+          tagName='div'
+          content={title}
+        />
+      </div>
+      <div className={styles.content_project}>
+        <Interweave
+          tagName='div'
+          content={link}
+          transform={interweaveTransformLinks}
+        />
+        <div className={styles.description}>
+          <Interweave
+            tagName='div'
+            content={description}
+          />
+        </div>
+      </div>
+    </section>
+  );
+};
+
+TemplateDesk.defaultProps = {content: {
+  description: '',
+  image: {url: ''},
+  link: '',
+  secondImage: {url: ''},
+  title: ''
+}};
+
+export default TemplateDesk;

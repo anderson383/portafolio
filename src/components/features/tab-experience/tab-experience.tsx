@@ -21,7 +21,7 @@ const TabExperience:React.FC<TabExperienceProps> = props => {
   const [active, setActive] = useState(0);
 
   return (
-    <div className={styles.tab_experience} id='experiencia-laboral'>
+    <section className={styles.tab_experience} id={title.replace(' ', '-')?.toLocaleLowerCase()?.trim()}>
       <div className={`container ${ styles.container }`}>
         <h2>{title}</h2>
         <div className={` ${ styles.tabs }`}>
@@ -40,7 +40,7 @@ const TabExperience:React.FC<TabExperienceProps> = props => {
         </div>
       </div>
 
-    </div>
+    </section>
   );
 };
 

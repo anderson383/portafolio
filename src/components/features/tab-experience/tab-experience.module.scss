@@ -2,7 +2,7 @@
 @import '../../../styles/scss/modules/mixins';
 
 .tab_experience {
-  
+  overflow: hidden;
   h2 {
     margin-top: 100px;
     margin-bottom: 40px;
@@ -21,8 +21,8 @@
 
   .container {
     max-width: 1160px;
-    padding: 0 20px;
-    padding-bottom: 8rem;
+    padding: 0 30px;
+    padding-bottom: 3rem;
   }
 
   .header_buttons {

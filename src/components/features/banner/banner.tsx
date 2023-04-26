@@ -72,7 +72,7 @@ export const Banner:React.FC<BannerProps> = props => {
   });
 
   return (
-    <div className={styles.banner}>
+    <section className={styles.banner} id={'inicio'}>
       <>
         <img className={styles.img_letf} src="/img/bg-banner.svg" alt="" />
         <img className={styles.img_right} src="/img/bg-banner-2.svg" alt="" />
@@ -97,7 +97,7 @@ export const Banner:React.FC<BannerProps> = props => {
           />
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

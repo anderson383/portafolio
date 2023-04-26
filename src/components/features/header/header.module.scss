@@ -110,9 +110,11 @@
       font-family: $fjalla-one;
     }
 
-    .link_active {
+    :local .link_active.active {
+      
+    }
+    .link_active:global(.active){
       border-bottom: 2px solid $rose !important;
-      // color: 
     }
 
     .locales {

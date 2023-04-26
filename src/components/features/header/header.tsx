@@ -3,6 +3,7 @@ import {
 } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import {Link as LinkScroll} from 'react-scroll';
 import { MenuProps } from '@/services/repositories/contentful.repository';
 import styles from './header.module.scss';
 
@@ -29,8 +30,6 @@ export const Header:React.FC<HeaderProps> = ({
       pathname, asPath, query
     } = router;
 
-    // change just the locale and maintain all other route information including href's query
-
     router.push({
       pathname,
       query
@@ -47,9 +46,10 @@ export const Header:React.FC<HeaderProps> = ({
     };
   }, []);
 
-  return (
+  console.log(menu);
 
-    <header className={`${ styles.header_container } ${ isFixed ? styles.fixxed : '' }`}>
+  return (
+    <header className={`${ styles.header_container } ${ isFixed ? styles.fixxed : '' }`} >
       <div className={`${ styles.header }  container`}>
         <div className={styles.logo}>
           <Image
@@ -57,6 +57,7 @@ export const Header:React.FC<HeaderProps> = ({
             width={90}
             height={40}
             alt='logo-ander'
+            className='pero podemos programas muy facilmente con este metodo :v'
           />
         </div>
         <nav>
@@ -81,14 +82,21 @@ export const Header:React.FC<HeaderProps> = ({
           <ul className={`${ styles.menu_desk } `}>
             {
               menu.map((menuItem, index) => (
-                <li key={index + '222'}>
-                  <Link
+                <li key={index + 'menu-items'}>
+                  <LinkScroll
+                    spy={true}
+                    smooth
+                    duration={200}
+                    className={styles.link_active}
+                    to={menuItem.fields.name.replace(' ', '-')?.toLocaleLowerCase().trim()}
+                  >{menuItem.fields.name}</LinkScroll>
+                  {/* <Link
                     scroll
                     href={menuItem.fields.link}
                     className={router.asPath === menuItem.fields.link ? styles.link_active : ''}
                   >
                     {menuItem.fields.name}
-                  </Link>
+                  </Link> */}
                 </li>
               ))
             }

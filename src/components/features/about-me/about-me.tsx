@@ -5,6 +5,7 @@ import {
   useEffect, useState
 } from 'react';
 import axiosIntance from '@/services/config/axios/AxiosConfig';
+import { convertHtmlToString } from '@/helpers/cvr-html-tostring';
 import { Interweave } from 'interweave';
 import styles from './about-me.module.scss';
 import { useLottie } from 'lottie-react';
@@ -30,7 +31,6 @@ const AboutMe:React.FC<AboutMeProps> = props => {
   const {
     title, image, description, link, link_2
   } = props.content;
-
   const [jsonAnimation, setJsonAnimation] = useState({
     urlIconGit: '',
     urlLinkedin: '',
@@ -105,7 +105,7 @@ const AboutMe:React.FC<AboutMeProps> = props => {
   return (
 
     // <ScrollPage>
-    <div className={styles.about_me + ' '} id='sobre-mi'>
+    <section className={styles.about_me + ' '} id={convertHtmlToString(title).replace(' ', '-')?.toLocaleLowerCase()?.trim()}>
       <img className={styles.icon_bg_3}src="/img/ellipse-about-me-3.svg" alt="" />
       <div className="container">
         <div className={styles.title}>
@@ -153,7 +153,7 @@ const AboutMe:React.FC<AboutMeProps> = props => {
           />
         </div>
       </div>
-    </div>
+    </section>
 
   // </ScrollPage>
   );
