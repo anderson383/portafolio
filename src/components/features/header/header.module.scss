@@ -65,8 +65,6 @@
         padding: 16px;
         width: max-content;
         box-sizing: border-box;
-
-       
       }
     }
   
@@ -86,12 +84,13 @@
       color: $black;
       font-family: $fjalla-one;
       text-decoration: none;
+      cursor: pointer;
     }
 
-    .link_active {
-      color: $rose
+    .link_active:global(.active){
+      color: $rose;
+      
     }
-
   }
 
   .menu_desk {
@@ -112,6 +111,7 @@
 
     .link_active {
       position: relative;
+      cursor:pointer;
       // border-bottom: 2px solid $rose !important;
 
       &::before {

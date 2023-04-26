@@ -2,23 +2,25 @@ import { Interweave } from 'interweave';
 import styles from './template-desk.module.scss';
 interface TemplateDeskProps {
   content: {
-    title: string
+    name: string;
+    title: string;
     link: string;
-    description: string
+    description: string;
     image: {
-      url: string
+      url: string;
     }
     secondImage: {
-      url: string
+      url: string;
     }
   }
 }
 
 const TemplateDesk:React.FC<TemplateDeskProps> = ({content}) => {
   const {
-    title, image, secondImage, link, description
+    title, image, name, secondImage, link, description
   } = content;
 
+  console.log(name);
   const interweaveTransformLinks = (node: HTMLElement) => {
     if (node.tagName === 'a' || node.tagName === 'A') {
       const url = node.getAttribute('href');
@@ -57,7 +59,7 @@ const TemplateDesk:React.FC<TemplateDeskProps> = ({content}) => {
   };
 
   return (
-    <section id='proyectos' className="container">
+    <section id={name?.toLowerCase().trim()} className="container">
       <div className={styles.title}>
         <Interweave
           tagName='div'
@@ -86,6 +88,7 @@ TemplateDesk.defaultProps = {content: {
   description: '',
   image: {url: ''},
   link: '',
+  name: '',
   secondImage: {url: ''},
   title: ''
 }};

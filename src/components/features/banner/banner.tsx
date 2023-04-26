@@ -7,8 +7,8 @@ import styles from './banner.module.scss';
 import { useLottie } from 'lottie-react';
 interface BannerProps {
   content: {
-    style: string;
     name: string;
+    style: string;
     title:string;
     link: string;
     subtitle: string;
@@ -22,7 +22,7 @@ interface BannerProps {
 
 export const Banner:React.FC<BannerProps> = props => {
   const {
-    image, title, subtitle, link
+    image, title, subtitle, link, name
   } = props.content;
   const [jsonAnimation, setJsonAnimation] = useState('');
 
@@ -72,7 +72,7 @@ export const Banner:React.FC<BannerProps> = props => {
   });
 
   return (
-    <section className={styles.banner} id={'inicio'}>
+    <section className={styles.banner} id={name}>
       <>
         <img className={styles.img_letf} src="/img/bg-banner.svg" alt="" />
         <img className={styles.img_right} src="/img/bg-banner-2.svg" alt="" />

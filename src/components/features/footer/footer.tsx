@@ -8,7 +8,7 @@ const Footer = () => {
         Designed & Built by Anderson Sepulveda
         <p>{
           date.getFullYear()
-        } - Colombia v1.0</p>
+        } - Colombia v1.1</p>
       </a>
     </footer>
   );

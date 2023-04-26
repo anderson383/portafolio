@@ -19,6 +19,7 @@ interface HeaderProps {
 export const Header:React.FC<HeaderProps> = ({
   logo, menu
 }) => {
+
   const router = useRouter();
   const [openMenu, setOpenMenu] = useState(false);
   const [isFixed, setIsFixed] = useState(false);
@@ -66,12 +67,22 @@ export const Header:React.FC<HeaderProps> = ({
             {
               menu.map((menuItem, index) => (
                 <li key={index}>
-                  <Link
+
+                  <LinkScroll
+                    spy={true}
+                    smooth
+                    duration={100}
+                    offset={-300}
+                    absolute
+                    className={styles.link_active}
+                    to={menuItem.fields.name.replace(' ', '-')?.toLocaleLowerCase().trim()}
+                  >{menuItem.fields.name}</LinkScroll>
+                  {/* <Link
                     href={menuItem.fields.link}
                     className={router.asPath === menuItem.fields.link ? styles.link_active : ''}
                   >
                     {menuItem.fields.name}
-                  </Link>
+                  </Link> */}
                 </li>
               ))
             }
@@ -84,8 +95,8 @@ export const Header:React.FC<HeaderProps> = ({
                   <LinkScroll
                     spy={true}
                     smooth
-                    duration={200}
-                    offset={-500}
+                    duration={100}
+                    offset={-300}
                     absolute
                     className={styles.link_active}
                     to={menuItem.fields.name.replace(' ', '-')?.toLocaleLowerCase().trim()}
@@ -120,7 +131,6 @@ export const Header:React.FC<HeaderProps> = ({
                   </button>
                 </li>
               </ul>
-
             </li>
           </ul>
           {/* <div className={styles.darkInput}>

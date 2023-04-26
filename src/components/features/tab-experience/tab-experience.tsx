@@ -9,19 +9,22 @@ interface TabsProps {
 
 interface TabExperienceProps {
   content: {
-    title: string,
-    tabs: TabsProps[]
+    title: string;
+    name: string;
+    tabs: TabsProps[];
   }
 }
 
 const TabExperience:React.FC<TabExperienceProps> = props => {
   const {
-    tabs, title
+    tabs, title, name
   } = props.content;
+
+  console.log(name);
   const [active, setActive] = useState(0);
 
   return (
-    <section className={styles.tab_experience} id={title.replace(' ', '-')?.toLocaleLowerCase()?.trim()}>
+    <section className={styles.tab_experience} id={name.replace(' ', '-')?.toLocaleLowerCase()?.trim()}>
       <div className={`container ${ styles.container }`}>
         <h2>{title}</h2>
         <div className={` ${ styles.tabs }`}>
@@ -45,6 +48,7 @@ const TabExperience:React.FC<TabExperienceProps> = props => {
 };
 
 TabExperience.defaultProps = {content: {
+  name: '',
   tabs: [],
   title: ''
 }};

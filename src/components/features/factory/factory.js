@@ -51,6 +51,7 @@ const Factory = ({
     const tabContanerProps = {
       content: {
         image: transformField('image', fields.image),
+        name: fields.name,
         tabs: fields.items?.map((tabData, tabIndex) => {
           return {
             components: tabData.fields?.content?.map((subComponent, componentIndex) => {
